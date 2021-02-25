@@ -1,1 +1,42 @@
 google-site-verification=KW7zEcmsyiMJn5cG07pvca_IhstR2tSz2I3B8wcmUs8
+
+Bucket policy
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::katemaveau.com/*"
+        }
+    ]
+}
+
+{
+    "Version": "2012-10-17",
+    "Id": "GiveSESPermissionToWriteEmail",
+    "Statement": [
+        {
+            "Sid": "GiveSESPermissionToWriteEmail",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "ses.amazonaws.com"
+            },
+            "Action": "s3:PutObject",
+            "Resource": "arn:aws:s3:::katemaveau.com/*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:Referer": "9dd4ec30b46062bd3f164093bb2bddbf24f88444fb17f20d1d4a83d76607ef18"
+                }
+            }
+        }
+    ]
+}
+Bucket id
+9dd4ec30b46062bd3f164093bb2bddbf24f88444fb17f20d1d4a83d76607ef18
+
+ip Pieter Host: 77.111.240.133
+
+2a02:2350:5:102:2d:9594:aa51:4ad6
